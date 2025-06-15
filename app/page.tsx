@@ -1,14 +1,11 @@
 'use client';
 import { useEffect } from "react";
 import Script from "next/script";
+import Image from "next/image";
 
 export default function Page() {
   useEffect(() => {
-    // Aguarda 800ms para garantir disparo dos scripts
-    const timer = setTimeout(() => {
-      window.location.href = "https://chat.whatsapp.com/EddfpaqyfucGbz1qzIPS2b";
-    }, 800);
-    return () => clearTimeout(timer);
+    // Você pode usar este espaço para outros scripts, se quiser
   }, []);
 
   return (
@@ -26,7 +23,8 @@ export default function Page() {
           gtag('config', 'G-3Z83EGB4VK');
         `}
       </Script>
-      {/* Pixel da Meta (Facebook) */}
+
+      {/* Meta Pixel (Facebook) */}
       <Script id="facebook-pixel" strategy="afterInteractive">
         {`
           !function(f,b,e,v,n,t,s)
@@ -44,20 +42,63 @@ export default function Page() {
       <noscript>
         <img height="1" width="1" style={{display:"none"}} src="https://www.facebook.com/tr?id=1772846193267355&ev=PageView&noscript=1" />
       </noscript>
+
       <div style={{
+        minHeight: "100vh",
         width: "100vw",
-        height: "100vh",
+        background: "#FFE600",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
         fontFamily: "sans-serif"
       }}>
-        <h1>Redirecionando para o grupo do WhatsApp...</h1>
-        <p>
-          Se não for redirecionado,
-          <a href="https://chat.whatsapp.com/EddfpaqyfucGbz1qzIPS2b" style={{ marginLeft: 4 }}>clique aqui</a>.
-        </p>
+        {/* Logo */}
+        <div style={{ marginBottom: 32 }}>
+          <Image
+            src="/logo.png"
+            alt="Logo da sua empresa"
+            width={120}
+            height={120}
+            priority
+          />
+        </div>
+
+        {/* Headline */}
+        <h1 style={{
+          color: "#222",
+          textAlign: "center",
+          fontWeight: "bold",
+          fontSize: 32,
+          maxWidth: 440,
+          lineHeight: 1.2,
+          marginBottom: 48
+        }}>
+          PAGAR CARO NUNCA MAIS!<br />
+          NÓS TEMOS AS MELHORES OFERTAS DA INTERNET!
+        </h1>
+
+        {/* Botão */}
+        <a
+          href="https://chat.whatsapp.com/EddfpaqyfucGbz1qzIPS2b"
+          
+          rel="noopener noreferrer"
+          style={{
+            padding: "20px 48px",
+            background: "#25D366",
+            color: "#fff",
+            borderRadius: "10px",
+            boxShadow: "0 2px 16px 0 rgba(0,0,0,0.08)",
+            fontSize: 22,
+            fontWeight: 700,
+            textDecoration: "none",
+            letterSpacing: 1.2,
+            transition: "background 0.2s",
+            marginBottom: 20
+          }}
+        >
+          👉 Acessar grupo de ofertas VIP
+        </a>
       </div>
     </>
   );
