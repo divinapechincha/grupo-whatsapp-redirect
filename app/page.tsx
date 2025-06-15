@@ -1,5 +1,4 @@
 'use client';
-import { useEffect } from "react";
 import Script from "next/script";
 import Image from "next/image";
 import { League_Spartan } from "next/font/google";
@@ -13,12 +12,11 @@ const leagueSpartan = League_Spartan({
 export default function Page() {
   return (
     <>
-      {/* Google Fonts fallback (para garantir em todos navegadores) */}
+      {/* Google Fonts Fallback */}
       <link
         href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap"
         rel="stylesheet"
       />
-
       {/* Google Analytics GA4 */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-3Z83EGB4VK"
@@ -32,7 +30,6 @@ export default function Page() {
           gtag('config', 'G-3Z83EGB4VK');
         `}
       </Script>
-
       {/* Meta Pixel (Facebook) */}
       <Script id="facebook-pixel" strategy="afterInteractive">
         {`
@@ -57,7 +54,7 @@ export default function Page() {
         style={{
           minHeight: "100vh",
           width: "100vw",
-          background: "#FFE600",
+          background: "#ffdc46", // amarelo principal
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -68,11 +65,7 @@ export default function Page() {
       >
         {/* Logo */}
         <div style={{ marginBottom: 28, width: 120, height: 120 }}>
-          {/* 
-            Coloque sua logo em public/logo.png para funcionar.
-            Se estiver em outra pasta ou url, troque o src abaixo!
-            O width/height controla o tamanho da logo no layout.
-          */}
+          {/* Coloque sua logo em /public/logo.png */}
           <Image
             src="/logo.png"
             alt="Logo da sua empresa"
@@ -88,9 +81,8 @@ export default function Page() {
               background: "#fff",
               boxShadow: "0 2px 16px 0 rgba(0,0,0,0.04)"
             }}
-            // fallback inline caso imagem não carregue
+            // Fallback inline caso imagem não carregue
             onError={(e) => {
-              // Substitui por fallback em SVG ou texto
               (e.target as HTMLImageElement).src =
                 "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><rect width='120' height='120' fill='%23ccc'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23333' font-size='18'>Logo</text></svg>";
             }}
@@ -99,7 +91,7 @@ export default function Page() {
 
         {/* Headline */}
         <h1 style={{
-          color: "#222",
+          color: "#000000",
           textAlign: "center",
           fontWeight: 700,
           fontSize: "2rem",
@@ -119,11 +111,11 @@ export default function Page() {
           rel="noopener noreferrer"
           style={{
             padding: "18px 32px",
-            background: "#25D366",
-            color: "#fff",
+            background: "#1f2468", // azul escuro
+            color: "#fff", // branco
             borderRadius: "10px",
             boxShadow: "0 2px 16px 0 rgba(0,0,0,0.13)",
-            fontSize: "1.13rem",
+            fontSize: "1rem",
             fontWeight: 700,
             textDecoration: "none",
             letterSpacing: 1,
@@ -138,7 +130,7 @@ export default function Page() {
         </a>
       </div>
 
-      {/* Responsividade extra para headline/button (exemplo rápido com global CSS) */}
+      {/* Responsividade extra para headline/botão */}
       <style jsx global>{`
         @media (min-width: 450px) {
           h1 {
