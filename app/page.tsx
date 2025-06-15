@@ -94,7 +94,7 @@ export default function Page() {
           color: "#000000",
           textAlign: "center",
           fontWeight: 700,
-          fontSize: "2rem",
+          fontSize: "1.13rem",
           maxWidth: 330,
           lineHeight: 1.15,
           marginBottom: 36,
