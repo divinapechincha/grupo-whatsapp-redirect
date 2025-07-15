@@ -49,7 +49,7 @@ export default function Page() {
       </h1>
       {/* Botão */}
       <a
-        href="https://chat.whatsapp.com/EddfpaqyfucGbz1qzIPS2b"
+        href="https://chat.whatsapp.com/KFQMgFZ6ZOmK9rXkCcdpFF?mode=ac_t"
         
         rel="noopener noreferrer"
         style={{
