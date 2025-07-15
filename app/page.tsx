@@ -1,7 +1,24 @@
 'use client';
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 export default function Page() {
+  const [linkWhatsApp, setLinkWhatsApp] = useState("https://chat.whatsapp.com/KFQMgFZ6ZOmK9rXkCcdpFF");
+
+  useEffect(() => {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    if (/android/i.test(userAgent)) {
+      // Android: usar link com intent
+      setLinkWhatsApp(
+        "intent://chat.whatsapp.com/KFQMgFZ6ZOmK9rXkCcdpFF#Intent;scheme=https;package=com.whatsapp;end"
+      );
+    } else {
+      // iOS e outros: manter link normal
+      setLinkWhatsApp("https://chat.whatsapp.com/KFQMgFZ6ZOmK9rXkCcdpFF");
+    }
+  }, []);
+
   return (
     <main
       style={{
@@ -33,6 +50,7 @@ export default function Page() {
           }}
         />
       </div>
+
       {/* Headline */}
       <h1 style={{
         color: "#000000",
@@ -47,10 +65,10 @@ export default function Page() {
         PAGAR CARO NUNCA MAIS!<br />
         NÓS TEMOS AS MELHORES OFERTAS DA INTERNET!
       </h1>
+
       {/* Botão */}
       <a
-        href="https://chat.whatsapp.com/KFQMgFZ6ZOmK9rXkCcdpFF?mode=ac_t"
-        
+        href={linkWhatsApp}
         rel="noopener noreferrer"
         style={{
           padding: "18px 32px",
