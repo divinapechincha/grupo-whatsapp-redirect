@@ -6,7 +6,7 @@ export default function Page() {
   const [linkWhatsApp, setLinkWhatsApp] = useState("https://chat.whatsapp.com/KFQMgFZ6ZOmK9rXkCcdpFF");
 
   useEffect(() => {
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const userAgent = navigator.userAgent || navigator.vendor; // Corrigido para TS
 
     if (/android/i.test(userAgent)) {
       // Android: usar link com intent
@@ -14,10 +14,26 @@ export default function Page() {
         "intent://chat.whatsapp.com/KFQMgFZ6ZOmK9rXkCcdpFF#Intent;scheme=https;package=com.whatsapp;end"
       );
     } else {
-      // iOS e outros: manter link normal
+      // iOS e outros
       setLinkWhatsApp("https://chat.whatsapp.com/KFQMgFZ6ZOmK9rXkCcdpFF");
     }
   }, []);
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    // Dispara o evento no GA4
+    if (typeof window.gtag !== "undefined") {
+      window.gtag("event", "entrar_grupo_whatsapp", {
+        event_category: "engajamento",
+        event_label: "botao",
+      });
+    }
+
+    // Atraso opcional de 300ms para garantir envio do evento
+    e.preventDefault();
+    setTimeout(() => {
+      window.location.href = linkWhatsApp;
+    }, 300);
+  };
 
   return (
     <main
@@ -68,45 +84,29 @@ export default function Page() {
 
       {/* Botão */}
       <a
-  href={linkWhatsApp}
-  rel="noopener noreferrer"
-  onClick={(e) => {
-    // Dispara o evento no GA4
-    // @ts-ignore (para o TypeScript não reclamar de gtag)
-    if (typeof window.gtag !== "undefined") {
-      window.gtag("event", "entrar_grupo_whatsapp", {
-        event_category: "engajamento",
-        event_label: "botao",
-      });
-    }
-
-    // (opcional) atrasar um pouco a navegação
-    // para garantir que o evento seja enviado
-    e.preventDefault();
-    setTimeout(() => {
-      window.location.href = linkWhatsApp;
-    }, 300); // 300ms é o suficiente
-  }}
-  style={{
-    padding: "18px 32px",
-    background: "#1f2468",
-    color: "#fff",
-    borderRadius: "10px",
-    boxShadow: "0 2px 16px 0 rgba(0,0,0,0.13)",
-    fontSize: "1.13rem",
-    fontWeight: 700,
-    textDecoration: "none",
-    letterSpacing: 1,
-    transition: "background 0.2s",
-    marginBottom: 20,
-    width: "90vw",
-    maxWidth: 350,
-    textAlign: "center",
-    display: "inline-block",
-  }}
->
-  👉 Acessar grupo de ofertas VIP
-</a>
+        href={linkWhatsApp}
+        rel="noopener noreferrer"
+        onClick={handleClick}
+        style={{
+          padding: "18px 32px",
+          background: "#1f2468",
+          color: "#fff",
+          borderRadius: "10px",
+          boxShadow: "0 2px 16px 0 rgba(0,0,0,0.13)",
+          fontSize: "1.13rem",
+          fontWeight: 700,
+          textDecoration: "none",
+          letterSpacing: 1,
+          transition: "background 0.2s",
+          marginBottom: 20,
+          width: "90vw",
+          maxWidth: 350,
+          textAlign: "center",
+          display: "inline-block",
+        }}
+      >
+        👉 Acessar grupo de ofertas VIP
+      </a>
     </main>
   );
 }
