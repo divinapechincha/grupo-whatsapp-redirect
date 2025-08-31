@@ -2,17 +2,28 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
+// Declaração do dataLayer para TypeScript
+declare global {
+  interface Window {
+    dataLayer: any[];
+  }
+}
+
 export default function Page() {
-  const [linkWhatsApp, setLinkWhatsApp] = useState("https://chat.whatsapp.com/KFQMgFZ6ZOmK9rXkCcdpFF");
+  const [linkWhatsApp, setLinkWhatsApp] = useState(
+    "https://chat.whatsapp.com/KFQMgFZ6ZOmK9rXkCcdpFF"
+  );
 
   useEffect(() => {
     const userAgent = navigator.userAgent || navigator.vendor;
 
     if (/android/i.test(userAgent)) {
+      // Android: usar link com intent
       setLinkWhatsApp(
         "intent://chat.whatsapp.com/KFQMgFZ6ZOmK9rXkCcdpFF#Intent;scheme=https;package=com.whatsapp;end"
       );
     } else {
+      // iOS e outros: link normal
       setLinkWhatsApp("https://chat.whatsapp.com/KFQMgFZ6ZOmK9rXkCcdpFF");
     }
   }, []);
@@ -26,10 +37,11 @@ export default function Page() {
       event_label: 'botao',
     });
 
+    // Atraso opcional de 300ms para garantir envio do evento antes do redirecionamento
     e.preventDefault();
     setTimeout(() => {
       window.location.href = linkWhatsApp;
-    }, 300); // Mantém atraso curto para garantir envio do evento
+    }, 300);
   };
 
   return (
@@ -45,6 +57,7 @@ export default function Page() {
         padding: "0",
       }}
     >
+      {/* Logo */}
       <div style={{ marginBottom: 28, width: 120, height: 120 }}>
         <Image
           src="/logo.png"
@@ -63,6 +76,7 @@ export default function Page() {
         />
       </div>
 
+      {/* Headline */}
       <h1 style={{
         color: "#000000",
         textAlign: "center",
@@ -77,6 +91,7 @@ export default function Page() {
         NÓS TEMOS AS MELHORES OFERTAS DA INTERNET!
       </h1>
 
+      {/* Botão */}
       <a
         href={linkWhatsApp}
         rel="noopener noreferrer"
