@@ -26,7 +26,8 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* Google Tag Manager */}
+
+        {/* GTM Head Script */}
         <Script id="gtm-head" strategy="afterInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];
@@ -38,6 +39,17 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-MXTD6XMZ');
           `}
         </Script>
+
+        {/* GTM Noscript (fallback) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-MXTD6XMZ"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+            title="GTM"
+          />
+        </noscript>
 
         {/* Meta Pixel Facebook */}
         <Script id="facebook-pixel" strategy="afterInteractive">
