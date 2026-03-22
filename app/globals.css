@@ -100,15 +100,16 @@ body {
 }
 
 /* NUVENS */
-.cloud {
+.cloud-svg {
   position: absolute;
-  width: 140px;
-  height: 70px;
-  background: white;
-  border-radius: 50px;
-  opacity: 0.35;
-  filter: blur(2px);
+  width: 160px;
+  opacity: 0.25;
   animation: float 6s ease-in-out infinite;
+}
+
+.cloud-svg svg {
+  width: 100%;
+  fill: white;
 }
 
 .cloud1 {
