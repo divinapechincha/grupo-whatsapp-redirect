@@ -88,10 +88,18 @@ export default function Page() {
         <p>Siga nossas ofertas 👇</p>
 
         <div className="icons">
-          <a href="https://www.instagram.com/divina.pechincha" target="_blank">📸</a>
-          <a href="https://www.tiktok.com/@divinapechincha2" target="_blank">🎵</a>
-        </div>
-      </div>
+  <a href="https://www.instagram.com/divina.pechincha" target="_blank">
+    <svg viewBox="0 0 24 24">
+      <path d="M7 2C4 2 2 4 2 7v10c0 3 2 5 5 5h10c3 0 5-2 5-5V7c0-3-2-5-5-5H7zm5 5a5 5 0 110 10 5 5 0 010-10zm6.5-.9a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"/>
+    </svg>
+  </a>
+
+  <a href="https://www.tiktok.com/@divinapechincha2" target="_blank">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 2v14a4 4 0 11-4-4h1.5a2.5 2.5 0 102.5 2.5V6a6 6 0 004 2V5a4 4 0 01-4-3z"/>
+    </svg>
+  </a>
+</div>
 
       {/* PROVA SOCIAL */}
       <p className="proof">
