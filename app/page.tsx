@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-// Declaração do dataLayer para TypeScript
 declare global {
   interface Window {
     dataLayer: any[];
@@ -18,18 +17,13 @@ export default function Page() {
     const userAgent = navigator.userAgent || navigator.vendor;
 
     if (/android/i.test(userAgent)) {
-      // Android: usar link com intent
       setLinkWhatsApp(
         "intent://chat.whatsapp.com/KFQMgFZ6ZOmK9rXkCcdpFF#Intent;scheme=https;package=com.whatsapp;end"
       );
-    } else {
-      // iOS e outros: link normal
-      setLinkWhatsApp("https://chat.whatsapp.com/KFQMgFZ6ZOmK9rXkCcdpFF");
     }
   }, []);
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    // Envia evento para o GTM
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       event: 'entrar_grupo_whatsapp',
@@ -37,7 +31,6 @@ export default function Page() {
       event_label: 'botao',
     });
 
-    // Atraso opcional de 300ms para garantir envio do evento antes do redirecionamento
     e.preventDefault();
     setTimeout(() => {
       window.location.href = linkWhatsApp;
@@ -45,77 +38,57 @@ export default function Page() {
   };
 
   return (
-    <main
-      style={{
-        minHeight: "100vh",
-        width: "100vw",
-        background: "#ffdc46",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "0",
-      }}
-    >
-      {/* Logo */}
-      <div style={{ marginBottom: 28, width: 120, height: 120 }}>
+    <main className="container">
+
+      {/* NUVENS */}
+      <div className="cloud cloud1"></div>
+      <div className="cloud cloud2"></div>
+
+      {/* LOGO */}
+      <div className="logo">
         <Image
           src="/logo.png"
-          alt="Logo Divina Pechincha"
+          alt="Divina Pechincha"
           width={120}
           height={120}
           priority
-          style={{
-            width: "100%",
-            height: "auto",
-            objectFit: "contain",
-            borderRadius: 16,
-            background: "#fff",
-            boxShadow: "0 2px 16px 0 rgba(0,0,0,0.04)"
-          }}
         />
       </div>
 
-      {/* Headline */}
-      <h1 style={{
-        color: "#000000",
-        textAlign: "center",
-        fontWeight: 700,
-        fontSize: "2rem",
-        maxWidth: 330,
-        lineHeight: 1.15,
-        marginBottom: 36,
-        letterSpacing: ".03em"
-      }}>
-        PAGAR CARO NUNCA MAIS!<br />
-        NÓS TEMOS AS MELHORES OFERTAS DA INTERNET!
+      {/* TEXTO */}
+      <h1 className="headline">
+        Ofertas que você não encontra sozinho
       </h1>
 
-      {/* Botão */}
+      <p className="sub">
+        Economize todos os dias com promoções reais e atualizadas
+      </p>
+
+      {/* BOTÃO */}
       <a
         href={linkWhatsApp}
         rel="noopener noreferrer"
         onClick={handleClick}
-        style={{
-          padding: "18px 32px",
-          background: "#1f2468",
-          color: "#fff",
-          borderRadius: "10px",
-          boxShadow: "0 2px 16px 0 rgba(0,0,0,0.13)",
-          fontSize: "1.13rem",
-          fontWeight: 700,
-          textDecoration: "none",
-          letterSpacing: 1,
-          transition: "background 0.2s",
-          marginBottom: 20,
-          width: "90vw",
-          maxWidth: 350,
-          textAlign: "center",
-          display: "inline-block",
-        }}
+        className="cta"
       >
-        👉 Acessar grupo de ofertas VIP
+        👉 Quero entrar no grupo VIP
       </a>
+
+      {/* REDES SOCIAIS */}
+      <div className="social">
+        <p>Siga nossas ofertas 👇</p>
+
+        <div className="icons">
+          <a href="https://instagram.com" target="_blank">📸</a>
+          <a href="https://tiktok.com" target="_blank">🎵</a>
+        </div>
+      </div>
+
+      {/* PROVA SOCIAL */}
+      <p className="proof">
+        +10.000 pessoas economizando 💰
+      </p>
+
     </main>
   );
 }
