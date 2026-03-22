@@ -67,6 +67,9 @@ export default function Page() {
   return (
     <main className="container">
 
+      {/* GLOW DIVINO */}
+      <div className="divine-glow"></div>
+
       {/* NUVENS */}
       <div className="cloud-svg cloud1">
         <svg viewBox="0 0 200 60">
