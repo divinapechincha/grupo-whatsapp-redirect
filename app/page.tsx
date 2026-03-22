@@ -41,17 +41,8 @@ export default function Page() {
     <main className="container">
 
       {/* NUVENS */}
-      <div className="cloud-svg cloud1">
-  <svg viewBox="0 0 200 60">
-    <path d="M20 40 Q40 10 80 30 T140 30 Q180 10 180 40 Q180 60 140 60 H40 Q20 60 20 40 Z" />
-  </svg>
-</div>
-
-<div className="cloud-svg cloud2">
-  <svg viewBox="0 0 200 60">
-    <path d="M20 40 Q40 10 80 30 T140 30 Q180 10 180 40 Q180 60 140 60 H40 Q20 60 20 40 Z" />
-  </svg>
-</div>
+      <div className="cloud cloud1"></div>
+      <div className="cloud cloud2"></div>
 
       {/* LOGO */}
       <div className="logo">
@@ -75,7 +66,7 @@ export default function Page() {
 
       {/* BOTÃO */}
       <a
-        href={https://chat.whatsapp.com/KFQMgFZ6ZOmK9rXkCcdpFF}
+        href={linkWhatsApp}
         rel="noopener noreferrer"
         onClick={handleClick}
         className="cta"
@@ -88,8 +79,8 @@ export default function Page() {
         <p>Siga nossas ofertas 👇</p>
 
         <div className="icons">
-          <a href="https://www.instagram.com/divina.pechincha" target="_blank">📸</a>
-          <a href="https://www.tiktok.com/@divinapechincha2" target="_blank">🎵</a>
+          <a href="https://instagram.com" target="_blank">📸</a>
+          <a href="https://tiktok.com" target="_blank">🎵</a>
         </div>
       </div>
 
