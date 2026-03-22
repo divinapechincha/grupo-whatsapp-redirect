@@ -27,8 +27,6 @@ export default function Page() {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       event: 'entrar_grupo_whatsapp',
-      event_category: 'engajamento',
-      event_label: 'botao',
     });
 
     e.preventDefault();
@@ -40,18 +38,18 @@ export default function Page() {
   return (
     <main className="container">
 
-      {/* NUVENS */}
+      {/* NUVENS SVG */}
       <div className="cloud-svg cloud1">
-  <svg viewBox="0 0 200 60">
-    <path d="M20 40 Q40 10 80 30 T140 30 Q180 10 180 40 Q180 60 140 60 H40 Q20 60 20 40 Z" />
-  </svg>
-</div>
+        <svg viewBox="0 0 200 60">
+          <path d="M20 40 Q40 10 80 30 T140 30 Q180 10 180 40 Q180 60 140 60 H40 Q20 60 20 40 Z" />
+        </svg>
+      </div>
 
-<div className="cloud-svg cloud2">
-  <svg viewBox="0 0 200 60">
-    <path d="M20 40 Q40 10 80 30 T140 30 Q180 10 180 40 Q180 60 140 60 H40 Q20 60 20 40 Z" />
-  </svg>
-</div>
+      <div className="cloud-svg cloud2">
+        <svg viewBox="0 0 200 60">
+          <path d="M20 40 Q40 10 80 30 T140 30 Q180 10 180 40 Q180 60 140 60 H40 Q20 60 20 40 Z" />
+        </svg>
+      </div>
 
       {/* LOGO */}
       <div className="logo">
@@ -76,30 +74,36 @@ export default function Page() {
       {/* BOTÃO */}
       <a
         href={linkWhatsApp}
-        rel="noopener noreferrer"
         onClick={handleClick}
         className="cta"
       >
         👉 Quero entrar no grupo VIP
       </a>
 
-      {/* REDES SOCIAIS */}
+      {/* REDES */}
       <div className="social">
         <p>Siga nossas ofertas 👇</p>
 
         <div className="icons">
-  <a href="https://www.instagram.com/divina.pechincha" target="_blank">
-    <svg viewBox="0 0 24 24">
-      <path d="M7 2C4 2 2 4 2 7v10c0 3 2 5 5 5h10c3 0 5-2 5-5V7c0-3-2-5-5-5H7zm5 5a5 5 0 110 10 5 5 0 010-10zm6.5-.9a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"/>
-    </svg>
-  </a>
 
-  <a href="https://www.tiktok.com/@divinapechincha2" target="_blank">
-    <svg viewBox="0 0 24 24">
-      <path d="M12 2v14a4 4 0 11-4-4h1.5a2.5 2.5 0 102.5 2.5V6a6 6 0 004 2V5a4 4 0 01-4-3z"/>
-    </svg>
-  </a>
-</div>
+          {/* INSTAGRAM */}
+          <a href="https://www.instagram.com/divina.pechincha" target="_blank">
+            <svg viewBox="0 0 24 24">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+
+          {/* TIKTOK */}
+          <a href="https://www.tiktok.com/@divinapechincha2" target="_blank">
+            <svg viewBox="0 0 448 512">
+              <path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.32c7.87 33.32 31.27 60.33 62.11 74.27a121.14 121.14 0 0 0 58.8 15.32Z"/>
+            </svg>
+          </a>
+
+        </div>
+      </div>
 
       {/* PROVA SOCIAL */}
       <p className="proof">
