@@ -2,99 +2,138 @@
 
 body {
   margin: 0;
-  padding: 0;
   font-family: 'League Spartan', Arial, sans-serif;
 }
 
+/* INTRO CINEMA */
+.intro {
+  height: 100vh;
+  background: radial-gradient(circle at center, #2F3FA3 0%, #0d1235 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+
+.vignette {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, transparent 60%, rgba(0,0,0,0.7) 100%);
+}
+
+.intro-content {
+  z-index: 2;
+  animation: fadeZoom 2.5s ease;
+}
+
+.intro-logo img {
+  filter: drop-shadow(0 0 20px rgba(255, 215, 100, 0.9));
+  margin-bottom: 20px;
+}
+
+.intro-title {
+  font-size: 2.2rem;
+  letter-spacing: 3px;
+  animation: textReveal 1.8s ease;
+}
+
+.intro-sub {
+  margin-top: 10px;
+  opacity: 0.85;
+}
+
+/* ANIMAÇÕES */
+@keyframes fadeZoom {
+  0% { opacity: 0; transform: scale(1.2); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes textReveal {
+  0% { opacity: 0; letter-spacing: 10px; transform: translateY(20px); }
+  100% { opacity: 1; letter-spacing: 3px; transform: translateY(0); }
+}
+
+/* LANDING */
 .container {
   min-height: 100vh;
-  width: 100vw;
-  background: linear-gradient(180deg, #F4C542 0%, #FFD76A 100%);
+  background: linear-gradient(180deg, #F4C542, #FFD76A);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
-  overflow: hidden;
-  padding: 20px;
+}
+
+/* NUVENS */
+.cloud-svg {
+  position: absolute;
+  width: 160px;
+  opacity: 0.25;
+  animation: float 6s infinite ease-in-out;
+}
+
+.cloud1 { top: 10%; left: 10%; }
+.cloud2 { top: 20%; right: 10%; }
+
+.cloud-svg svg {
+  fill: white;
 }
 
 /* LOGO */
-.logo {
-  margin-bottom: 20px;
-}
-
 .logo img {
   border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 /* TEXTO */
 .headline {
   font-size: 2.2rem;
-  font-weight: 700;
-  text-align: center;
   color: #1E2A78;
-  max-width: 340px;
-  line-height: 1.2;
+  text-align: center;
 }
 
 .sub {
-  margin-top: 10px;
-  font-size: 1.1rem;
   text-align: center;
-  color: #333;
-  max-width: 300px;
+  margin-top: 10px;
 }
 
 /* BOTÃO */
 .cta {
-  margin-top: 25px;
-  padding: 18px 32px;
+  margin-top: 20px;
+  padding: 18px 30px;
   background: linear-gradient(90deg, #1E2A78, #2F3FA3);
-  color: #fff;
+  color: white;
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-  font-size: 1.1rem;
-  font-weight: 700;
   text-decoration: none;
-  text-align: center;
-  width: 90vw;
-  max-width: 350px;
-  transition: all 0.2s ease;
-}
-
-.cta:hover {
-  transform: translateY(-2px);
 }
 
 /* REDES */
 .social {
-  margin-top: 20px;
   text-align: center;
+  margin-top: 20px;
 }
 
 .icons {
   display: flex;
-  justify-content: center;
   gap: 20px;
   margin-top: 10px;
 }
 
 .icons a {
-  width: 52px;
-  height: 52px;
+  width: 50px;
+  height: 50px;
   background: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
   transition: transform 0.2s ease;
 }
 
 .icons a:hover {
-  transform: translateY(-3px);
+  transform: translateY(-3px) scale(1.05);
 }
 
 .icons svg {
@@ -111,49 +150,13 @@ body {
 
 /* PROVA SOCIAL */
 .proof {
-  margin-top: 25px;
-  font-weight: 700;
-  color: #1E2A78;
+  margin-top: 20px;
+  font-weight: bold;
 }
 
-/* NUVENS SVG */
-.cloud-svg {
-  position: absolute;
-  width: 160px;
-  opacity: 0.25;
-  animation: float 6s ease-in-out infinite;
-}
-
-.cloud-svg svg {
-  width: 100%;
-  fill: white;
-}
-
-.cloud1 {
-  top: 10%;
-  left: 10%;
-}
-
-.cloud2 {
-  top: 20%;
-  right: 10%;
-}
-
+/* ANIMAÇÃO */
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
-  100% { transform: translateY(0px); }
-}
-
-/* RESPONSIVO */
-@media (min-width: 768px) {
-  .headline {
-    font-size: 2.8rem;
-    max-width: 500px;
-  }
-
-  .sub {
-    font-size: 1.2rem;
-    max-width: 400px;
-  }
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
 }
