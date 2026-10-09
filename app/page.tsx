@@ -1,6 +1,10 @@
 'use client';
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { track } from "@/lib/track";
+
+// Mude para true para reativar a animação de abertura
+const SHOW_INTRO = false;
 
 declare global {
   interface Window {
@@ -9,7 +13,7 @@ declare global {
 }
 
 export default function Page() {
-  const [showIntro, setShowIntro] = useState(true);
+  const [showIntro, setShowIntro] = useState(SHOW_INTRO);
   const [linkWhatsApp, setLinkWhatsApp] = useState(
     "https://chat.whatsapp.com/KFQMgFZ6ZOmK9rXkCcdpFF"
   );
@@ -23,6 +27,9 @@ export default function Page() {
       );
     }
 
+    track("view");
+
+    if (!SHOW_INTRO) return;
     const timer = setTimeout(() => {
       setShowIntro(false);
     }, 4000);
@@ -35,6 +42,8 @@ export default function Page() {
     window.dataLayer.push({
       event: 'entrar_grupo_whatsapp',
     });
+
+    track("click");
 
     e.preventDefault();
     setTimeout(() => {
