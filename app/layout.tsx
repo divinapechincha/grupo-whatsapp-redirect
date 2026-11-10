@@ -1,12 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Baloo_2 } from "next/font/google";
+import localFont from "next/font/local";
 import Script from "next/script";
 import "./globals.css";
 
-const baloo = Baloo_2({
-  variable: "--font-baloo",
-  subsets: ["latin", "latin-ext"],
-  weight: ["500", "600", "700", "800"],
+// Fonte variável hospedada no próprio site (41 KB, uma só requisição, sem Google Fonts)
+const brandFont = localFont({
+  src: "./fonts/bricolage-latin-wght.woff2",
+  variable: "--font-brand",
+  weight: "200 800",
   display: "swap",
 });
 
@@ -41,6 +42,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   themeColor: "#ffe51c",
+  colorScheme: "light",
 };
 
 export default function RootLayout({
@@ -50,7 +52,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={baloo.variable}>
+      <body className={brandFont.variable}>
 
         {/* GTM Head Script */}
         <Script id="gtm-head" strategy="afterInteractive">
