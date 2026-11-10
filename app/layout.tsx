@@ -1,21 +1,46 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Baloo_2 } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const baloo = Baloo_2({
+  variable: "--font-baloo",
+  subsets: ["latin", "latin-ext"],
+  weight: ["500", "600", "700", "800"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const SITE_URL = "https://grupo.divinapechincha.com.br";
+const TITLE = "Divina Pechincha | Ofertas que você não encontra sozinho";
+const DESCRIPTION =
+  "Entre no grupo e economize todos os dias com promoções reais. Ofertas VIP com os melhores preços da internet.";
 
 export const metadata: Metadata = {
-  title: "Divina Pechincha",
-  description: "Ofertas VIP com os melhores preços da internet na Divina Pechincha!",
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: SITE_URL,
+    siteName: "Divina Pechincha",
+    locale: "pt_BR",
+    type: "website",
+    images: [{ url: "/logo.png", width: 500, height: 500, alt: "Divina Pechincha" }],
+  },
+  twitter: {
+    card: "summary",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/logo.png"],
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0b1040",
 };
 
 export default function RootLayout({
@@ -24,8 +49,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html lang="pt-BR">
+      <body className={baloo.variable}>
 
         {/* GTM Head Script */}
         <Script id="gtm-head" strategy="afterInteractive">
