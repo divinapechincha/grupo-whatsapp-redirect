@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { track } from "@/lib/track";
+import Contador from "./contador";
 
 // Mude para true para reativar a animação de abertura
 const SHOW_INTRO = false;
@@ -117,7 +118,7 @@ export default function Page() {
     return (
       <main className="intro">
         <div className="intro-content">
-          <Image src="/logo.png" alt="" width={120} height={120} priority />
+          <Image src="/pomba.png" alt="" width={200} height={200} priority unoptimized />
           <h1>Divina Pechincha</h1>
           <p>Ofertas que você não encontra sozinho</p>
         </div>
@@ -127,24 +128,22 @@ export default function Page() {
 
   return (
     <main className="page">
-      <div className="halo" aria-hidden />
-
       <div className="wrap">
         {/* Apresentação + ação principal */}
         <section className="hero">
-          <div className="logo-sticker">
-            <Image
-              src="/logo.png"
-              alt="Divina Pechincha"
-              width={180}
-              height={180}
-              sizes="(min-width: 900px) 180px, 128px"
-              priority
-            />
-          </div>
+          {/* PNG sem recompressão: o amarelo da imagem é idêntico ao do fundo da página */}
+          <Image
+            src="/pomba.png"
+            alt=""
+            width={320}
+            height={320}
+            className="dove"
+            priority
+            unoptimized
+          />
 
-          <h1 className="headline">Ofertas que você não encontra sozinho</h1>
-          <p className="sub">Economize todos os dias com promoções reais.</p>
+          <h1 className="brand">Divina Pechincha</h1>
+          <p className="headline">Ofertas que você não encontra sozinho</p>
 
           <a href={groupLink} onClick={handleGroupClick} className="cta">
             <svg viewBox="0 0 24 24" aria-hidden focusable={false}>
@@ -153,7 +152,7 @@ export default function Page() {
             Entrar no grupo do WhatsApp
           </a>
 
-          <p className="proof">+10.000 pessoas economizando 💰</p>
+          <Contador />
         </section>
 
         {/* Outros canais */}

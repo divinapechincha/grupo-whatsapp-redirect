@@ -1,34 +1,31 @@
 @import "tailwindcss";
 
+/* Cores tiradas da arte da pomba */
 :root {
-  --navy-950: #0b1040;
-  --navy-900: #131a5a;
-  --navy-700: #1e2a78;
-  --yellow: #ffd400;
-  --yellow-deep: #b89400;
-  --cream: #fff8d6;
-  --ink: #0b1040;
+  --sun: #ffe51c;
+  --navy: #3a3e7b;
+  --navy-deep: #25285a;
+  --ink: #1f2255;
 }
 
 * {
   box-sizing: border-box;
 }
 
-html {
-  background: var(--navy-950);
-  -webkit-text-size-adjust: 100%;
-}
-
 body {
   margin: 0;
   font-family: var(--font-baloo), system-ui, sans-serif;
-  color: #fff;
-  background: var(--navy-950);
   -webkit-tap-highlight-color: transparent;
 }
 
-:focus-visible {
-  outline: 3px solid var(--yellow);
+/* Fundo amarelo também na área de "puxar" do celular (só na página pública) */
+html:has(.page, .intro) {
+  background: var(--sun);
+}
+
+.page :focus-visible,
+.intro :focus-visible {
+  outline: 3px solid var(--navy);
   outline-offset: 3px;
 }
 
@@ -38,43 +35,34 @@ body {
   display: grid;
   place-items: center;
   text-align: center;
-  background: radial-gradient(circle at 50% 40%, var(--navy-700), var(--navy-950) 70%);
+  background: var(--sun);
+  color: var(--navy);
 }
 
 .intro h1 {
-  margin: 12px 0 0;
-  font-size: 2rem;
+  margin: 4px 0 0;
+  font-size: 2.2rem;
   font-weight: 800;
 }
 
 .intro p {
   margin: 4px 0 0;
-  opacity: 0.8;
+  color: var(--ink);
+  opacity: 0.85;
+}
+
+.intro img {
+  width: 200px;
+  height: 200px;
 }
 
 /* ---------- PÁGINA ---------- */
 .page {
-  position: relative;
   min-height: 100dvh;
-  overflow: hidden;
-  isolation: isolate;
-  padding: max(28px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right))
-    max(32px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
-  background: linear-gradient(180deg, var(--navy-900) 0%, var(--navy-950) 100%);
-}
-
-/* Auréola azul atrás do logo (a "divina" do nome) */
-.halo {
-  position: absolute;
-  z-index: -1;
-  top: -140px;
-  left: 50%;
-  width: 620px;
-  height: 620px;
-  translate: -50% 0;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(72, 92, 235, 0.55), rgba(72, 92, 235, 0) 68%);
-  pointer-events: none;
+  color: var(--ink);
+  background: var(--sun);
+  padding: max(20px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right))
+    max(36px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
 }
 
 .wrap {
@@ -83,7 +71,7 @@ body {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 40px;
 }
 
 /* ---------- HERO ---------- */
@@ -94,62 +82,53 @@ body {
   text-align: center;
 }
 
-.logo-sticker {
-  width: 128px;
-  height: 128px;
-  border-radius: 50%;
-  rotate: -4deg;
-  box-shadow:
-    0 0 0 5px #fff,
-    0 18px 40px rgba(0, 0, 0, 0.45);
-  animation: settle 700ms cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+.dove {
+  display: block;
+  width: min(60vw, 250px);
+  height: auto;
+  margin-bottom: -6px;
+  animation: glide 900ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
-.logo-sticker img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
+.brand {
+  margin: 0;
+  font-size: clamp(2.5rem, 11.5vw, 3.3rem);
+  line-height: 0.98;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  color: var(--navy);
 }
 
 .headline {
-  margin: 22px 0 0;
-  font-size: clamp(2rem, 8.2vw, 2.6rem);
-  line-height: 1.02;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  text-wrap: balance;
-}
-
-.sub {
   margin: 12px 0 0;
-  max-width: 30ch;
-  font-size: 1.1rem;
-  line-height: 1.3;
-  color: rgba(255, 255, 255, 0.82);
+  max-width: 22ch;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  font-weight: 500;
+  color: var(--ink);
   text-wrap: balance;
 }
 
-/* Botão principal: tecla amarela com "profundidade" */
+/* Botão principal: azul da pomba, com "profundidade" */
 .cta {
   position: relative;
-  margin-top: 26px;
+  margin-top: 28px;
   width: 100%;
   min-height: 64px;
-  padding: 14px 20px;
+  padding: 14px 18px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
   border-radius: 18px;
-  background: var(--yellow);
-  color: var(--ink);
+  background: var(--navy);
+  color: var(--sun);
   font-size: clamp(1.1rem, 5.2vw, 1.28rem);
   font-weight: 800;
   line-height: 1.1;
   text-wrap: balance;
   text-decoration: none;
-  box-shadow: 0 6px 0 var(--yellow-deep), 0 16px 28px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 6px 0 var(--navy-deep), 0 16px 26px rgba(37, 40, 90, 0.28);
   transition: transform 120ms ease, box-shadow 120ms ease;
 }
 
@@ -167,32 +146,83 @@ body {
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  animation: ping 2.8s ease-out 1.4s infinite;
+  animation: ping 2.8s ease-out 1.6s infinite;
 }
 
 .cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 0 var(--yellow-deep), 0 20px 32px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 8px 0 var(--navy-deep), 0 20px 30px rgba(37, 40, 90, 0.28);
 }
 
 .cta:active {
   transform: translateY(5px);
-  box-shadow: 0 1px 0 var(--yellow-deep), 0 6px 12px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 1px 0 var(--navy-deep), 0 6px 12px rgba(37, 40, 90, 0.28);
 }
 
-.proof {
-  margin: 18px 0 0;
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--yellow);
+/* ---------- CONTADOR ---------- */
+.counter {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.counter-total {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+  color: var(--navy);
+}
+
+.counter-total b {
+  font-size: 2.1rem;
+  line-height: 1;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.counter-total span {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.counter-live {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  font-size: 0.95rem;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.counter-live b {
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.counter-live i {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--navy);
+  animation: blink 1.8s ease-in-out infinite;
 }
 
 /* ---------- CANAIS ---------- */
 .channels h2 {
   margin: 0 0 14px;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--navy);
 }
 
 .channel-list {
@@ -211,17 +241,14 @@ body {
   min-height: 68px;
   padding: 10px 14px;
   border-radius: 16px;
-  color: #fff;
+  color: var(--ink);
   text-decoration: none;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  transition: background-color 150ms ease, border-color 150ms ease, transform 150ms ease;
+  background: rgba(255, 255, 255, 0.5);
+  transition: background-color 150ms ease, transform 150ms ease;
 }
 
-.channel:hover,
-.radio:hover {
-  background: rgba(255, 255, 255, 0.13);
-  border-color: rgba(255, 255, 255, 0.3);
+.channel:hover {
+  background: rgba(255, 255, 255, 0.78);
 }
 
 .channel:active,
@@ -237,25 +264,25 @@ body {
   display: grid;
   place-items: center;
   border-radius: 14px;
-  background: var(--yellow);
+  background: var(--navy);
 }
 
 .channel-icon svg,
 .radio-icon svg {
   width: 24px;
   height: 24px;
-  fill: var(--ink);
+  fill: var(--sun);
   fill-rule: evenodd;
 }
 
 .channel-icon svg.stroke {
   fill: none;
-  stroke: var(--ink);
+  stroke: var(--sun);
   stroke-width: 2;
 }
 
 .channel-icon svg.stroke .dot {
-  fill: var(--ink);
+  fill: var(--sun);
   stroke: none;
 }
 
@@ -269,27 +296,45 @@ body {
   font-size: 1.12rem;
   font-weight: 700;
   line-height: 1.15;
+  color: var(--navy);
 }
 
 .channel-text small {
   margin-top: 2px;
   font-size: 0.95rem;
   line-height: 1.2;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--ink);
+  opacity: 0.8;
 }
 
-/* Rádio: destaque, com botão de play */
+/* Rádio: o único bloco cheio, para chamar atenção */
 .radio {
   margin-top: 14px;
   min-height: 80px;
   padding: 12px 14px;
-  background: rgba(255, 212, 0, 0.12);
-  border: 2px solid var(--yellow);
+  background: var(--navy);
+  color: var(--sun);
 }
 
 .radio:hover {
-  background: rgba(255, 212, 0, 0.2);
-  border-color: var(--yellow);
+  background: var(--navy-deep);
+}
+
+.radio .radio-icon {
+  background: var(--sun);
+}
+
+.radio .radio-icon svg {
+  fill: var(--navy);
+}
+
+.radio .channel-text b {
+  color: var(--sun);
+}
+
+.radio .channel-text small {
+  color: #fff;
+  opacity: 0.85;
 }
 
 .radio-play {
@@ -300,20 +345,20 @@ body {
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: #fff;
+  background: var(--sun);
 }
 
 .radio-play svg {
   width: 20px;
   height: 20px;
   margin-left: 2px;
-  fill: var(--ink);
+  fill: var(--navy);
 }
 
 /* ---------- ANIMAÇÕES ---------- */
-@keyframes settle {
+@keyframes glide {
   from {
-    transform: translateY(-24px) scale(0.86);
+    transform: translate(-18px, 14px) rotate(-3deg);
     opacity: 0;
   }
   to {
@@ -324,17 +369,28 @@ body {
 
 @keyframes ping {
   0% {
-    box-shadow: 0 0 0 0 rgba(255, 212, 0, 0.55);
+    box-shadow: 0 0 0 0 rgba(58, 62, 123, 0.45);
   }
   70%,
   100% {
-    box-shadow: 0 0 0 16px rgba(255, 212, 0, 0);
+    box-shadow: 0 0 0 16px rgba(58, 62, 123, 0);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .logo-sticker,
-  .cta::after {
+  .dove,
+  .cta::after,
+  .counter-live i {
     animation: none;
   }
   .cta,
@@ -348,16 +404,20 @@ body {
 @media (min-width: 640px) {
   .wrap {
     max-width: 640px;
-    gap: 44px;
+    gap: 48px;
   }
 
-  .logo-sticker {
-    width: 150px;
-    height: 150px;
+  .dove {
+    width: 280px;
+  }
+
+  .brand {
+    font-size: 3.8rem;
   }
 
   .headline {
-    font-size: 3rem;
+    max-width: none;
+    font-size: 1.5rem;
   }
 
   .cta {
@@ -377,20 +437,12 @@ body {
     padding: 48px 56px;
   }
 
-  .halo {
-    top: 50%;
-    left: 28%;
-    width: 900px;
-    height: 900px;
-    translate: -50% -50%;
-  }
-
   .wrap {
     max-width: 1120px;
     display: grid;
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
     align-items: center;
-    gap: 80px;
+    gap: 88px;
   }
 
   .hero {
@@ -398,22 +450,19 @@ body {
     text-align: left;
   }
 
-  .logo-sticker {
-    width: 176px;
-    height: 176px;
+  .dove {
+    width: 300px;
+    margin-left: -26px; /* a sombra da arte tem folga à esquerda */
+    margin-bottom: -10px;
+  }
+
+  .brand {
+    font-size: clamp(3.8rem, 6vw, 5.2rem);
   }
 
   .headline {
-    margin-top: 32px;
-    font-size: clamp(3rem, 4.7vw, 4.1rem);
-    line-height: 0.98;
-    text-wrap: pretty;
-  }
-
-  .sub {
-    margin-top: 18px;
-    max-width: 34ch;
-    font-size: 1.4rem;
+    margin-top: 16px;
+    font-size: 1.75rem;
   }
 
   .cta {
@@ -431,23 +480,29 @@ body {
     height: 32px;
   }
 
-  .proof {
-    margin-top: 22px;
-    font-size: 1.1rem;
+  .counter {
+    align-items: flex-start;
+    margin-top: 26px;
+  }
+
+  .counter-total b {
+    font-size: 2.5rem;
+  }
+
+  .counter-total span {
+    font-size: 1.25rem;
   }
 
   /* Painel de canais à direita */
   .channels {
     padding: 32px;
     border-radius: 28px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(6px);
+    background: rgba(255, 255, 255, 0.32);
   }
 
   .channels h2 {
     margin-bottom: 18px;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
 
   .channel-list {
@@ -459,10 +514,18 @@ body {
   .radio {
     padding: 12px 18px;
   }
+
+  .channel {
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  .channel:hover {
+    background: #fff;
+  }
 }
 
 @media (min-width: 1280px) {
   .wrap {
-    gap: 112px;
+    gap: 120px;
   }
 }
